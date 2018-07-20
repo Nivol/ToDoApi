@@ -1,0 +1,806 @@
+{
+	"info": {
+		"_postman_id": "15e080cd-9e05-4a5c-be92-67f3f408a85c",
+		"name": "Todo API localhost",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "21112603-a2c0-4575-ae58-54dfaf92297b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"d290f1ee-6c54-4b01-90e6-d701748f0851\",\r\n  \"name\": \"Home\",\r\n  \"description\": \"The list of things that need to be done at home\\n\",\r\n  \"tasks\": [\r\n    {\r\n      \"id\": \"0e2ac84f-f723-4f24-878b-44e63e7ae580\",\r\n      \"name\": \"mow the yard\",\r\n      \"completed\": true\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post list 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8481ac01-0eac-4f47-b1ba-e273150340d9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"d290f1ee-6c54-4b01-90e6-d701748f0852\",\r\n  \"name\": \"Work\",\r\n  \"description\": \"The list of things that need to be done at work\\n\",\r\n  \"tasks\": [\r\n    {\r\n      \"id\": \"0e2ac84f-f723-4f24-878b-44e63e7ae580\",\r\n      \"name\": \"mow the yard\",\r\n      \"completed\": true\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post list 2 duplicate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "50bf2dad-2297-4f5c-a34c-1ee8af0db9fe",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"d290f1ee-6c54-4b01-90e6-d701748f0852\",\r\n  \"name\": \"Work\",\r\n  \"description\": \"The list of things that need to be done at work\\n\",\r\n  \"tasks\": [\r\n    {\r\n      \"id\": \"0e2ac84f-f723-4f24-878b-44e63e7ae580\",\r\n      \"name\": \"mow the yard\",\r\n      \"completed\": true\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post empty list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "163a3dfd-1ffb-4787-a2dc-b77bc9a71164",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all lists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bfbbacdd-0d7b-46a2-8994-0425c8e946ea",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Json length is 2\", function () {",
+							"    pm.expect(jsonData.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get lists - search 'work'",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c7b0cc9d-3fda-4526-ad32-33831c4f56fd",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Json length is 1\", function () {",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Element id is d290f1ee-6c54-4b01-90e6-d701748f0852\", function () {",
+							"    pm.expect(jsonData[0].id).to.eql('d290f1ee-6c54-4b01-90e6-d701748f0852');",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists?searchString=work",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "searchString",
+							"value": "work"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get lists skip 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "926fbdb5-3ba1-49cd-a3e8-002f3903ba97",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Json length is 1\", function () {",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists?skip=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "skip",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get lists limit 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f322a145-3c17-4399-859b-acb56ed6a5ce",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Json length is 1\", function () {",
+							"    pm.expect(jsonData.length).to.eql(1);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/lists?limit=1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b5d93c2f-0e25-441a-a479-12bc11b2fc8d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Element id is d290f1ee-6c54-4b01-90e6-d701748f0851\", function () {",
+							"    pm.expect(jsonData.id).to.eql('d290f1ee-6c54-4b01-90e6-d701748f0851');",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "137b97be-51b9-48ec-b469-f11218914261",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"0e2ac84f-f723-4f24-878b-44e63e7ae581\",\r\n  \"name\": \"test api\",\r\n  \"completed\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851/tasks",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post task duplicate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cccb9f2f-4e42-44d2-b16b-eabd7fbe5933",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"0e2ac84f-f723-4f24-878b-44e63e7ae581\",\r\n  \"name\": \"test api\",\r\n  \"completed\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851/tasks",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list by id (check post task)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "be44caf6-a60d-4edd-aa2c-02f67aff4136",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"",
+							"pm.test(\"Element id is d290f1ee-6c54-4b01-90e6-d701748f0851\", function () {",
+							"    pm.expect(jsonData.id).to.eql('d290f1ee-6c54-4b01-90e6-d701748f0851');",
+							"});",
+							"",
+							"var tasks = jsonData.tasks;",
+							"pm.test(\"Tasks count is 2\", function () {",
+							"    pm.expect(tasks.length).to.eql(2);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post task completed (true)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc14dcff-cfac-45d0-8f40-9a9dceed8a44",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"completed\": true\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851/task/0e2ac84f-f723-4f24-878b-44e63e7ae581/complete",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851",
+						"task",
+						"0e2ac84f-f723-4f24-878b-44e63e7ae581",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list by id (check post comleted)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7601b860-bca8-4727-9553-ebf8cce69c5c",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"",
+							"pm.test(\"Element id is d290f1ee-6c54-4b01-90e6-d701748f0851\", function () {",
+							"    pm.expect(jsonData.id).to.eql('d290f1ee-6c54-4b01-90e6-d701748f0851');",
+							"});",
+							"",
+							"var secondTask = jsonData.tasks[1];",
+							"",
+							"pm.test(\"Second task is completed\", function () {",
+							"    pm.expect(secondTask.completed).to.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post task completed (false)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc14dcff-cfac-45d0-8f40-9a9dceed8a44",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"completed\": false\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851/task/0e2ac84f-f723-4f24-878b-44e63e7ae581/complete",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851",
+						"task",
+						"0e2ac84f-f723-4f24-878b-44e63e7ae581",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get list by id (check post uncomleted)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3a2dca26-d194-4f68-a0db-78469a13d58f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"var jsonData = pm.response.json();",
+							"",
+							"",
+							"pm.test(\"Element id is d290f1ee-6c54-4b01-90e6-d701748f0851\", function () {",
+							"    pm.expect(jsonData.id).to.eql('d290f1ee-6c54-4b01-90e6-d701748f0851');",
+							"});",
+							"",
+							"var secondTask = jsonData.tasks[1];",
+							"",
+							"pm.test(\"Second task is completed\", function () {",
+							"    pm.expect(secondTask.completed).to.false;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post wrong task completed (true) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ae63e6a-29ae-462b-948a-8cc5ad1f296d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"completed\": true\r\n}"
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/todo/list/d290f1ee-6c54-4b01-90e6-d701748f0851/task/0e2ac84f-f723-4f24-878b-44e63e7ae583/complete",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"todo",
+						"list",
+						"d290f1ee-6c54-4b01-90e6-d701748f0851",
+						"task",
+						"0e2ac84f-f723-4f24-878b-44e63e7ae583",
+						"complete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
